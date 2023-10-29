@@ -35,23 +35,26 @@ const firebaseConfig = {
      })
      
      //creating posts
-     document.addEventListener("DOMContentLoaded", function () {
-     const createNewPost = document.querySelector('.createPost')
-     createNewPost.addEventListener('submit', (e) => {
-         e.preventDefault() //stops default action of refreshing the html page
-          //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
-         addDoc(colRef, {
-             title: createNewPost.title.value, //add whatever value is in the title field
-             content: createNewPost.content.value, //add whatever value is in the content field
-            //**FIX IMAGE UPLOADING */ image: createNewPost.image.files[0], //add whatever value is in the  field
-           })
-         .then(()=> {
-             createNewPost.reset() //clears the form so we can easily input a new whatever we want on the webpage
-         })
-     })
-    });
+     const createNewPost = document.querySelector('.createPostFB')
+     if(createNewPost){
+      console.log(createNewPost)
+      createNewPost.addEventListener('submit', (e) => {
+          e.preventDefault() //stops default action of refreshing the html page
+           //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
+          addDoc(colRef, {
+              title: createNewPost.title.value, //add whatever value is in the title field
+              content: createNewPost.content.value, //add whatever value is in the content field
+             //**FIX IMAGE UPLOADING */ image: createNewPost.image.files[0], //add whatever value is in the  field
+            })
+          .then(()=> {
+              createNewPost.reset() //clears the form so we can easily input a new whatever we want on the webpage
+          })
+      })
+     }
 //signing users up
-const signupForm = document.querySelector('.signupInput')
+const signupForm = document.querySelector('.signupInputFB')
+if(signupForm){
+console.log(signupForm)
 signupForm.addEventListener('submit', (e) => {
     e.preventDefault()
     
@@ -67,37 +70,40 @@ signupForm.addEventListener('submit', (e) => {
             console.log(err.message)
         })
 })
-
-/* everything below this is fucked 
+}
 
 // logging in and out
-const logoutButton = document.querySelector('.logout')
-logoutButton.addEventListener('click', () => {
-  signOut(auth)
-    .then(() => {
-      console.log('user signed out')
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-})
+const logoutButton = document.querySelector('.logoutButton1')
+if(logoutButton){
+  logoutButton.addEventListener('click', () => {
+    signOut(auth)
+      .then(() => {
+        console.log('user signed out')
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  })
+}
 
-const loginForm = document.querySelector('.login')
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-
-  const email = loginForm.email.value
-  const password = loginForm.password.value
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then(cred => {
-      console.log('user logged in:', cred.user)
-      loginForm.reset()
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-})
+const loginForm = document.querySelector('.login1')
+if(loginForm){
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+  
+    const email = loginForm.email.value
+    const password = loginForm.password.value
+  
+    signInWithEmailAndPassword(auth, email, password)
+      .then(cred => {
+        console.log('user logged in:', cred.user)
+        loginForm.reset()
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  })
+}
 
 
 
