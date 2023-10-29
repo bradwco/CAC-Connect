@@ -64,9 +64,10 @@ signupForm.addEventListener('submit', (e) => {
         .then((cred) => {
             console.log('user created:',cred.user)
             signupForm.reset()
-            //TODO: Send user to the home page screen after this
+            window.location.href = "explore.html";
         })
         .catch((err)=>{
+          alert("Password should be at least 6 characters")
             console.log(err.message)
         })
 })
@@ -79,6 +80,7 @@ if(logoutButton){
     signOut(auth)
       .then(() => {
         console.log('user signed out')
+        window.location.href = "index.html";
       })
       .catch(err => {
         console.log(err.message)
@@ -98,9 +100,11 @@ if(loginForm){
       .then(cred => {
         console.log('user logged in:', cred.user)
         loginForm.reset()
+        window.location.href = "explore.html";
       })
       .catch(err => {
         console.log(err.message)
+        alert("Invalid Credentials")
       })
   })
 }
