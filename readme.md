@@ -1,0 +1,2 @@
+#READ THIS BEFORE RUNNING
+RUN >> npm run build

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Connect</title>
+      <link rel="stylesheet" href="index.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+     <h1>connect.</h1>
+     <div class="container">
+       <input type="checkbox" id="check">
+       <div class="login form">
+         <header>Login</header>
+<!--I changed the code below this to be email instead of username and maybe some other stuff idrk just ask me **SELF NOTE TO FUTURE BRADLEY do login**-->
+         <form class="login">
+          <label for="email">Email:</label>
+           <input type="email" name="email">
+           <label for="password">Password:</label>
+           <input type="password" name="password">
+           <!-- commented this part out bc idk if this is just for looks, or u want me to implement it bc idk how to tbh but I know theres a way I can reset passwords on firebase
+            <a href="#">Forgot password?</a> 
+          -->
+           <button >Login</button>
+         </form>
+<!--I changed the code above this to be email instead of username and maybe some other stuff idrk just ask me-->
+         <div class="signup">
+           <span class="signup">Don't have an account?
+            <label for="check">Signup</label>
+           </span>
+         </div>
+       </div>
+       <div class="registration form">
+         <header>Signup</header>
+<!--I changed the code below this to be email instead of username and maybe some other stuff idrk just ask me-->
+         <form class="signupInput">
+          <label for="email">Email:</label>
+           <input type="email" name = "email">
+           <label for="password">Password:</label>
+           <input type="password" name ="password">
+           <button type="submit">Signup</button>
+         </form>
+        
+<!--I changed the code above this to be email instead of username and maybe some other stuff idrk just ask me-->
+         <div class="signup">
+           <span class="signup">Already have an account?
+            <label for="check">Login</label>
+           </span>
+         </div>
+       </div>
+     </div>
+     <script src="../src/script.js"></script>
+      <script src="bundle.js"></script>
+   </body>
+</html>
