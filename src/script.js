@@ -10,10 +10,12 @@ if(hamburger){
         overlay.classList.toggle('show');
     });
 }
+if(closeSidebar){
     closeSidebar.addEventListener('click', function() {
         sidebar.classList.remove('show');
         overlay.classList.remove('show');
     });
+}
 });
 
 //Image Upload
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(resultElement){
         resultElement.innerHTML = selectedOption;
     }
-    console.log(selectedOption);
+    console.log(selectedOption); //this will output as null on the html files that dont have the "resultElement" but its fine bc itll wokr for the html file u need it -Bradley
 });
 // Load saved settings onto page
 const savedName = localStorage.getItem('name');
