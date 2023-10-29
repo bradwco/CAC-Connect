@@ -37,7 +37,6 @@ const firebaseConfig = {
      //creating posts
      const createNewPost = document.querySelector('.createPostFB')
      if(createNewPost){
-      console.log(createNewPost)
       createNewPost.addEventListener('submit', (e) => {
           e.preventDefault() //stops default action of refreshing the html page
            //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
@@ -54,7 +53,6 @@ const firebaseConfig = {
 //signing users up
 const signupForm = document.querySelector('.signupInputFB')
 if(signupForm){
-console.log(signupForm)
 signupForm.addEventListener('submit', (e) => {
     e.preventDefault()
     

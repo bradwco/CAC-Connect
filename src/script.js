@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const closeSidebar = document.getElementById('close-sidebar');
     const overlay = document.getElementById('overlay');
-
+if(hamburger){
     hamburger.addEventListener('click', function() {
         sidebar.classList.toggle('show');
         overlay.classList.toggle('show');
     });
+}
     closeSidebar.addEventListener('click', function() {
         sidebar.classList.remove('show');
         overlay.classList.remove('show');
@@ -53,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const selectedOption = urlParams.get('groups');
     const resultElement = document.getElementById('group-title');
-    resultElement.innerHTML = selectedOption;
+    if(resultElement){
+        resultElement.innerHTML = selectedOption;
+    }
     console.log(selectedOption);
 });
 // Load saved settings onto page
@@ -82,22 +85,24 @@ if (savedPhone) {
 // Save settings
 const settingsForm = document.getElementById("settings-form")
 const saveButton = document.getElementById("save-button")
-saveButton.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(settingsForm);
-      const name = formData.get('name');
-      const password = formData.get('password');
-      const dob = formData.get('dob');
-      const phone = formData.get('phone');
-
-      localStorage.setItem('name', name);
-      localStorage.setItem('password', password);
-      localStorage.setItem('dob', dob);
-      localStorage.setItem('phone', phone);
-
-      alert('Changes saved successfully!');
-});
+if(saveButton){
+    saveButton.addEventListener('click', function(event) {
+        event.preventDefault();
+  
+        const formData = new FormData(settingsForm);
+        const name = formData.get('name');
+        const password = formData.get('password');
+        const dob = formData.get('dob');
+        const phone = formData.get('phone');
+  
+        localStorage.setItem('name', name);
+        localStorage.setItem('password', password);
+        localStorage.setItem('dob', dob);
+        localStorage.setItem('phone', phone);
+  
+        alert('Changes saved successfully!');
+  });
+}
 
 
 function createPost() {
@@ -155,11 +160,14 @@ function createPost() {
 }
 
 const submitBtn = document.getElementById('submitBtn');
-submitBtn.addEventListener('click', function() {
-  const updatedName = document.getElementById('tag');
-  const usernameInput = document.getElementById("usernameInput").value;
-  updatedName.textContent = usernameInput;
-});
+if(submitBtn){
+    submitBtn.addEventListener('click', function() {
+        const updatedName = document.getElementById('tag');
+        const usernameInput = document.getElementById("usernameInput").value;
+        updatedName.textContent = usernameInput;
+      });   
+}
+
 
 
    
