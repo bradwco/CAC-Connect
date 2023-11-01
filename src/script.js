@@ -107,59 +107,6 @@ if(saveButton){
 }
 
 
-function createPost() {
-    const title = document.getElementById("post-title").value;
-    const content = document.getElementById("post-content").value;
-    const imageInput = document.getElementById("post-image");
-    const imageFile = imageInput.files[0];
-    let imageUrl = "";
-
-    if (imageFile) {
-        // Check if the selected file is an image
-        if (imageFile.type.startsWith("image/")) {
-            imageUrl = URL.createObjectURL(imageFile);
-        } else {
-            alert("Please select a valid image file.");
-            return;
-        }
-    }
-
-    const postPreview = document.getElementById("post-preview");
-
-    // Create a new post element
-    const postElement = document.createElement("div");
-    postElement.classList.add("post-preview");
-
-    const postTitle = document.createElement("h2");
-    postTitle.classList.add("post-title");
-    postTitle.textContent = title;
-
-    const postContent = document.createElement("p");
-    postContent.classList.add("post-content");
-    postContent.textContent = content;
-
-    // Create an image element if a valid image is selected
-    if (imageUrl) {
-        const postImage = document.createElement("img");
-        postImage.classList.add("post-image");
-        postImage.src = imageUrl;
-        postImage.style.height = "600px";
-        postImage.style.width = "550px";
-        postElement.appendChild(postImage);
-    }
-
-    // Append the title and content to the new post element
-    postElement.appendChild(postTitle);
-    postElement.appendChild(postContent);
-
-    // Append the new post element to the container
-    postPreview.appendChild(postElement);
-
-    // Clear the input fields
-    document.getElementById("post-title").value = "";
-    document.getElementById("post-content").value = "";
-    imageInput.value = "";
-}
 
 const submitBtn = document.getElementById('submitBtn');
 if(submitBtn){

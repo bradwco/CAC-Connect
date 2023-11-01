@@ -5,6 +5,9 @@ import {
 import{
     getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword
 } from 'firebase/auth'
+import{
+    ref, uploadBytesResumable, getDownloadURL, getStorage
+} from 'firebase/storage'
 const firebaseConfig = {
     apiKey: "AIzaSyDu8hQHr1fRKRPtjHEGe5Yd2OQxToUwvAM",
     authDomain: "fir-practice-4046f.firebaseapp.com",
@@ -15,11 +18,12 @@ const firebaseConfig = {
   };
 
    //initialize app
-   initializeApp(firebaseConfig)
+   const app = initializeApp(firebaseConfig)
 
    //initialize service
    const db = getFirestore()
    const auth = getAuth()
+   const storage = getStorage(app);
 
    //collection ref
    const colRef = collection(db, 'posts')
@@ -116,39 +120,53 @@ if(loginForm){
     //creating posts
     let imageUrl = "";
     const createNewPost = document.querySelector('.createPostFB')
-    if(createNewPost){
-     createNewPost.addEventListener('submit', (e) => {
-         e.preventDefault() //stops default action of refreshing the html page
-          //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
-          const imageInput = document.getElementById("post-image");
-          const imageFile = imageInput.files[0];
-        
-          if (imageFile) {
-            // Check if the selected file is an image
-            if (imageFile.type.startsWith("image/")) {
-                imageUrl = URL.createObjectURL(imageFile);
-                console.log(imageUrl)
-            } else {
-                alert("Please select a valid image file.");
-                return;
-            }
-        } 
-         addDoc(colRef, {
-             title: createNewPost.title.value, //add whatever value is in the title field
-             content: createNewPost.content.value, //add whatever value is in the content field
-             image: imageUrl,
-           })
-         .then(()=> {
-          console.log(colRef.title)
-          addDoc(idRef, {
-            documentID: colRef.id,
-            createdTimestamp: new Date()
-          })
-          createNewPost.reset() 
-
-         })
-     })
+    if (createNewPost) {
+      createNewPost.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const imageInput = document.getElementById("post-image");
+        const imageFile = imageInput.files[0];
+    
+        if (imageFile) {
+          const storageRef = ref(storage, 'images/' + imageFile.name);
+          const uploadTask = uploadBytesResumable(storageRef, imageFile);
+    
+          uploadTask.on('state_changed', (snapshot) => {
+            // You can track the upload progress here
+          }, (error) => {
+            // Handle errors
+          }, () => {
+            // Upload complete, you can now get the download URL
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log('File available at', downloadURL);
+              // Store the permanent URL in a variable
+              imageUrl = downloadURL;
+              console.log('Permanent Image URL:', imageUrl);
+    
+              // Now that you have the image URL, add the document to Firestore
+              addDoc(colRef, {
+                title: createNewPost.title.value,
+                content: createNewPost.content.value,
+                image: imageUrl,
+              })
+                .then(() => {
+                  console.log(colRef.title);
+                  addDoc(idRef, {
+                    documentID: colRef.id,
+                    createdTimestamp: new Date()
+                  });
+                  createNewPost.reset();
+                })
+                .catch((error) => {
+                  console.error("Error adding document:", error);
+                });
+            });
+          });
+        } else {
+          console.log('No image selected.');
+        }
+      });
     }
+    
 
 
     function displayPost(title, content, image){
@@ -191,40 +209,5 @@ if(loginForm){
         // imageInput.value = "";
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //BRADLEY NOTE TO FUTURE SELF, you can refer back to this later if you guys want to implemtn deleting post feature
-     /*
-     //deleting documents
-     const deleteBookForm = document.querySelector('.delete')
-     deleteBookForm.addEventListener('submit', (e) =>{
-         e.preventDefault()
- 
-         const docRef = doc(db, 'books', deleteBookForm.id.value) //takes three parameters to find the data base, look which collections we want to delete, then find what doc to delete by id
- 
-         deleteDoc(docRef)
-         .then(() =>{
-             deleteBookForm.reset() //clears the form so we can easily input a new whatever we want on the webpage
-         })
-     })
-     */
 
  
