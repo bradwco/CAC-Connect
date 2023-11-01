@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, getDoc
+    getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, getDoc, getDocs
 } from 'firebase/firestore'
 import{
     getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword
@@ -23,33 +23,37 @@ const firebaseConfig = {
 
    //collection ref
    const colRef = collection(db, 'posts')
+   const idRef = collection(db, 'idCollectionTracker')
  
    //get collection data **REAL TIME COLLECTION DATA** = makes it so we dont have to refresh to see changes everytime but it happens automatically
    //this below is also known as setting up a "subscription"
+   var allPostsArray = [];
      onSnapshot(colRef, (snapshot) => {
          let posts = []
          snapshot.docs.forEach((post) => {
              posts.push({...post.data(), id: post.id})
          })
          console.log(posts)
+         //this will run and output all the current posts from an array
+         getDocs(colRef)
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // doc.data() contains the data of the document
+      allPostsArray.push(doc.data());
+      for(let i =0; i<allPostsArray.length; i++){
+        let post = allPostsArray[i]
+        if(!post.hasOwnProperty("posted")){
+          displayPost(post.title, post.content, post.image)
+          post.posted = true;
+        }
+      }
+    });
+  })
+  .catch((error) => {
+    console.error("Error getting documents: ", error);
+  });
      })
      
-     //creating posts
-     const createNewPost = document.querySelector('.createPostFB')
-     if(createNewPost){
-      createNewPost.addEventListener('submit', (e) => {
-          e.preventDefault() //stops default action of refreshing the html page
-           //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
-          addDoc(colRef, {
-              title: createNewPost.title.value, //add whatever value is in the title field
-              content: createNewPost.content.value, //add whatever value is in the content field
-             //**FIX IMAGE UPLOADING */ image: createNewPost.image.files[0], //add whatever value is in the  field
-            })
-          .then(()=> {
-              createNewPost.reset() //clears the form so we can easily input a new whatever we want on the webpage
-          })
-      })
-     }
 //signing users up
 const signupForm = document.querySelector('.signupInputFB')
 if(signupForm){
@@ -70,7 +74,7 @@ signupForm.addEventListener('submit', (e) => {
         })
 })
 }
-
+//////
 // logging in and out
 const logoutButton = document.querySelector('.logoutButton1')
 if(logoutButton){
@@ -108,6 +112,84 @@ if(loginForm){
 }
 
 
+
+    //creating posts
+    let imageUrl = "";
+    const createNewPost = document.querySelector('.createPostFB')
+    if(createNewPost){
+     createNewPost.addEventListener('submit', (e) => {
+         e.preventDefault() //stops default action of refreshing the html page
+          //to use addDoc, u first refer to the collection that u want to add to then add the object with all the info needed
+          const imageInput = document.getElementById("post-image");
+          const imageFile = imageInput.files[0];
+        
+          if (imageFile) {
+            // Check if the selected file is an image
+            if (imageFile.type.startsWith("image/")) {
+                imageUrl = URL.createObjectURL(imageFile);
+                console.log(imageUrl)
+            } else {
+                alert("Please select a valid image file.");
+                return;
+            }
+        } 
+         addDoc(colRef, {
+             title: createNewPost.title.value, //add whatever value is in the title field
+             content: createNewPost.content.value, //add whatever value is in the content field
+             image: imageUrl,
+           })
+         .then(()=> {
+          console.log(colRef.title)
+          addDoc(idRef, {
+            documentID: colRef.id,
+            createdTimestamp: new Date()
+          })
+          createNewPost.reset() 
+
+         })
+     })
+    }
+
+
+    function displayPost(title, content, image){
+        
+        const postPreview = document.getElementById("post-preview");
+
+        // Create a new post element
+        const postElement = document.createElement("div");
+        postElement.classList.add("post-preview");
+
+        const postTitle = document.createElement("h2");
+        postTitle.classList.add("post-title");
+        postTitle.textContent = title;
+
+        const postContent = document.createElement("p");
+        postContent.classList.add("post-content");
+        postContent.textContent = content;
+
+        // Create an image element if a valid image is selected
+
+            const postImage =  document.createElement('img')
+            postImage.classList.add("post-image");
+            postImage.src = image;
+            postImage.style.height = "600px";
+            postImage.style.width = "550px";  
+            postElement.appendChild(postImage);
+        
+
+        // Append the title and content to the new post element
+        postElement.appendChild(postTitle);
+        postElement.appendChild(postContent);
+
+        // Append the new post element to the container
+        postPreview.appendChild(postElement);
+
+        
+        // // Clear the input fields
+        // document.getElementById("post-title").value = "";
+        // document.getElementById("post-content").value = "";
+        // imageInput.value = "";
+    }
 
 
 
