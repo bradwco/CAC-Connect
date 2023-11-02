@@ -60,7 +60,23 @@
           </div>
       </div>
     </nav>
-
+    <body>
+        <br>
+        <div class="post-container">
+            <form class="createPostFB">
+                <h1>Create Post</h1>
+                <label for="post-title">Title:</label>
+                <input type="text" name="title" id="post-title" placeholder="Enter post title" required><br>
+                <label for="post-content">Content:</label>
+                <textarea id="post-content" name="content" rows="4" placeholder="Enter post content" required></textarea><br>
+                <label for="post-image" required>Image:</label>
+                <input type="file" name="image" id="post-image" accept="image/*"><br>
+                <button>Create Post</button>
+            </form>
+                <div class="post-preview" id="post-preview">
+                </div>
+        </div>
+    </body>
   <body>
     <div id="title-header">
       <h1>Your Posts</h1>
@@ -101,3 +117,6 @@
     <script src="bundle.js"></script>
   </body>
 </html>
+
+
+<!---->

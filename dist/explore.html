@@ -7,207 +7,200 @@
     <link rel="stylesheet" href="explore.css">
 </head>
 
-    <nav id="top-bar">
-        <h1 id="logo">connect.</h1>
-        <div id="user-info">
-            <h3 id="tag">user123</h3>
-            <img id="profile-image" src="https://cdn1.iconfinder.com/data/icons/ui-essential-17/32/UI_Essential_Outline_1_essential-app-ui-avatar-profile-user-account-512.png" alt="profile">
-        </div>
-    </nav>
+<nav id="top-bar">
+    <h1 id="logo">connect.</h1>
+    <div id="user-info">
+        <h3 id="tag">user123</h3>
+        <img id="profile-image" src="https://cdn1.iconfinder.com/data/icons/ui-essential-17/32/UI_Essential_Outline_1_essential-app-ui-avatar-profile-user-account-512.png" alt="profile">
+    </div>
+</nav>
 
-    <div id="sidebar">
-        <div id="close-sidebar">&times;</div>
-        <button class="side-button 1">
-            <img src="https://cdn3.iconfinder.com/data/icons/remixicon-system/24/login-box-line-256.png">
-            <p>Join an existing group</p>
-        </button> 
-        <button class="side-button 2">
-            <img src="https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Circle_Plus-256.png">
-            <p>Create a new group</p>
-        </button>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h1 class="modal-title">Join a group</h2>
-              <label for="">Enter the code here:</label>
-              <input type="text" id="code" required>
-              <button id="join-group" class="join">Join</button>
-            </div>
-          </div>        
-          <div id="myModal2" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h1 class="modal-title">Create a new group</h2>
-              <div>
-                <label for="">Enter your group's name</label>
-                <input type="text" id="new-name" required>
-              </div>
-              <div>
-                <label for="">Describe your group</label>
-                <textarea row=3 col = 15 id="group-desc"></textarea> 
-              </div>
-              <button id="create-group" class="join">Create</button>
-            </div>
-          </div>           
-        <h2>Joined Groups</h2>
-        <div class="small-divider"></div>
-        <div class="group">
-            <p class="group-name"></p>
-        </div>
-        <div class="group">
-            <p class="group-name"></p>
-        </div>
-        <div class="group">
-            <p class="group-name"></p>
-        </div>
-        <div class="group">
-            <p class="group-name"></p>
+<div id="sidebar">
+    <div id="close-sidebar">&times;</div>
+    <button class="side-button 1">
+        <img src="https://cdn3.iconfinder.com/data/icons/remixicon-system/24/login-box-line-256.png">
+        <p>Join an existing group</p>
+    </button>
+    <button class="side-button 2">
+        <img src="https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Circle_Plus-256.png">
+        <p>Create a new group</p>
+    </button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="modal-title">
+                Join a group</h2>
+                <label for="">Enter the code here:</label>
+                <input type="text" id="code" required>
+                <button id="join-group" class="join">Join</button>
         </div>
     </div>
-
-    <div id="overlay"></div>
-
-    <nav id="sub-bar">
-        <div class="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 class="modal-title">
+                Create a new group</h2>
+                <div>
+                    <label for="">Enter your group's name</label>
+                    <input type="text" id="new-name" required>
+                </div>
+                <div>
+                    <label for="">Describe your group</label>
+                    <textarea row=3 col=15 id="group-desc"></textarea>
+                </div>
+                <button id="create-group" class="join">Create</button>
         </div>
-        <div class="tabs">
-            <div class="tab">
-                <a class="page" href="explore.html">Explore</a>
-            </div>
-            <div class="tab">
-                <a class="page" href="created.html">Created</a>
-            </div>
-            <div class="tab">
-                <a class="page" href="settings.html">Settings</a>
-            </div>
+    </div>
+    <h2>Joined Groups</h2>
+    <div class="small-divider"></div>
+    <div class="group">
+        <p class="group-name"></p>
+    </div>
+    <div class="group">
+        <p class="group-name"></p>
+    </div>
+    <div class="group">
+        <p class="group-name"></p>
+    </div>
+    <div class="group">
+        <p class="group-name"></p>
+    </div>
+</div>
+
+<div id="overlay"></div>
+
+<nav id="sub-bar">
+    <div class="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="tabs">
+        <div class="tab">
+            <a class="page" href="explore.html">Explore</a>
         </div>
-    </nav>
-  <body>
-    <a href ="createPost.html">
-      <input type="image" src="createPost.png" id="createPost"/>
+        <div class="tab">
+            <a class="page" href="created.html">Created</a>
+        </div>
+        <div class="tab">
+            <a class="page" href="settings.html">Settings</a>
+        </div>
+    </div>
+</nav>
+<body>
+    <a href="createPost.html">
+        <input type="image" src="createPost.png" id="createPost" />
     </a>
     </div>
     <title>Social Media Post Maker</title>
     </head>
     <br>
-        <div class="post-container">
-            <form class = "createPostFB">
-                <h1>Create Post</h1>
-                <label for="post-title">Title:</label>
-                <input type="text" name = "title" id="post-title" placeholder="Enter post title" required><br>
-                <label for="post-content">Content:</label>
-                <textarea id="post-content" name = "content" rows="4" placeholder="Enter post content" required></textarea><br>
-                <label for="post-image"  required>Image:</label>
-                <input type="file" name = "image"id="post-image" accept="image/*"><br>
-                <button>Create Post</button>
-            </form>
-            <div class="post-preview" id="post-preview">
-            </div>
-        </div>
-
-        <div id="main-container">
-            <div class="row">
-                <div class="card">
+        <br>
+        
+    <div id="main-container">
+        <div class="row">
+            <div class="card">
                 <img class="thumbnail" src="https://media.sciencephoto.com/image/c0239148/800wm/C0239148-Volunteers_in_a_community_garden.jpg">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>866 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>95 likes</p>
-                    <img class="pfp" src="pfp-images/ecobuds.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>866 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>95 likes</p>
+                        <img class="pfp" src="pfp-images/ecobuds.jpg">
                     </div>
                     <p>Come join us in collecting recycling this Tuesday, 10/16, for community service hours. See you there!</p>
-                    <button class="join" >Join</button>
+                    <button class="join">Join</button>
                 </div>
-                </div>
+            </div>
 
-                <div class="card">
+            <div class="card">
                 <img class="thumbnail" src="https://southsidekitchen.com/wp-content/uploads/2021/01/cheeseburger-sliders-9.jpg.webp">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>623 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>52 likes</p>
-                    <img class="pfp" src="pfp-images/codeteam.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>623 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>52 likes</p>
+                        <img class="pfp" src="pfp-images/codeteam.jpg">
                     </div>
                     <p>Don’t miss us at the Night Market this Friday‼️ We will be selling HAWAIIAN SLIDERS and LEMONADE 🍔🥂See you there!🔥</p>
                     <button class="join">Join</button>
                 </div>
-                </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="card">
+        <div class="row">
+            <div class="card">
                 <img class="thumbnail" src="post-images/fbla.jpg">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>234 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>45 likes</p>
-                    <img class="pfp" src="pfp-images/fbla.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>234 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>45 likes</p>
+                        <img class="pfp" src="pfp-images/fbla.jpg">
                     </div>
-                    <p>PLEASE COME JOIN US TO LEARN MORE ‼️💰
-                        DATE CHANGED TO 10/19!!</p>
-                    <button class="join" >Join</button>
+                    <p>
+                        PLEASE COME JOIN US TO LEARN MORE ‼️💰
+                        DATE CHANGED TO 10/19!!
+                    </p>
+                    <button class="join">Join</button>
                 </div>
-                </div>
+            </div>
 
-                <div class="card">
+            <div class="card">
                 <img class="thumbnail" src="post-images/ogp.jpg">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>338 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>72 likes</p>
-                    <img class="pfp" src="pfp-images/ogp-pfp.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>338 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>72 likes</p>
+                        <img class="pfp" src="pfp-images/ogp-pfp.jpg">
                     </div>
                     <p>With the Fall Season coming to an end, don’t miss out on your chance to sign up for the Winter Season of the Ladera #OGPYBL</p>
                     <button class="join">Join</button>
                 </div>
-                </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="card">
+        <div class="row">
+            <div class="card">
                 <img class="thumbnail" src="post-images/bball.jpg">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>175 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>36 likes</p>
-                    <img class="pfp" src="pfp-images/gawhsbball.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>175 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>36 likes</p>
+                        <img class="pfp" src="pfp-images/gawhsbball.jpg">
                     </div>
                     <p>Wilson will be hosting basketball Clinics on Saturday, October 14th. If you are interested please visit our website to sign up.</p>
-                    <button class="join" >Join</button>
+                    <button class="join">Join</button>
                 </div>
-                </div>
+            </div>
 
-                <div class="card">
+            <div class="card">
                 <img class="thumbnail" src="post-images/hlpusd.jpg">
                 <div class="card-content">
                     <div class="top-content">
-                    <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
-                    <p>891 views</p>
-                    <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
-                    <p>156 likes</p>
-                    <img class="pfp" src="pfp-images/hlpusd-pfp.jpg">
+                        <img class="icon" src="https://cdn3.iconfinder.com/data/icons/outline-style-1/512/eye-512.png">
+                        <p>891 views</p>
+                        <img class="icon" src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/heart-love-like-likes-loved-favorite-512.png">
+                        <p>156 likes</p>
+                        <img class="pfp" src="pfp-images/hlpusd-pfp.jpg">
                     </div>
                     <p>Glen A. Wilson High School is one of 33 California schools named a 2023 National Blue Ribbon School #proudtobehlpusd</p>
                     <button class="join">Join</button>
                 </div>
-                </div>
             </div>
         </div>
+    </div>
 
-        <script src="../src/script.js"></script>
-        <script src="bundle.js"></script>
-  </body>
+    <script src="../src/script.js"></script>
+    <script src="bundle.js"></script>
+</body>
 </html>
+
+<!---->
