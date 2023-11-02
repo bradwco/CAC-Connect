@@ -17,31 +17,51 @@
 
     <div id="sidebar">
         <div id="close-sidebar">&times;</div>
-        <button class="side-button">
+        <button class="side-button 1">
             <img src="https://cdn3.iconfinder.com/data/icons/remixicon-system/24/login-box-line-256.png">
             <p>Join an existing group</p>
-        </button>
-        <button class="side-button">
+        </button> 
+        <button class="side-button 2">
             <img src="https://cdn0.iconfinder.com/data/icons/mobile-basic-vol-1/32/Circle_Plus-256.png">
             <p>Create a new group</p>
         </button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h1 class="modal-title">Join a group</h2>
+              <label for="">Enter the code here:</label>
+              <input type="text" id="code" required>
+              <button id="join-group" class="join">Join</button>
+            </div>
+          </div>        
+          <div id="myModal2" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h1 class="modal-title">Create a new group</h2>
+              <div>
+                <label for="">Enter your group's name</label>
+                <input type="text" id="new-name" required>
+              </div>
+              <div>
+                <label for="">Describe your group</label>
+                <textarea row=3 col = 15 id="group-desc"></textarea> 
+              </div>
+              <button id="create-group" class="join">Create</button>
+            </div>
+          </div>           
         <h2>Joined Groups</h2>
         <div class="small-divider"></div>
         <div class="group">
-            <img src="https://www.erikaslighthouse.org/wp-content/uploads/2021/07/KEY-CLUB-SEAL-Color-1.png">
-            <p>gawhskeyclub</p>
+            <p class="group-name"></p>
         </div>
         <div class="group">
-            <img src="https://avatars.githubusercontent.com/u/20122406?s=280&v=4">
-            <p>codeteam</p>
+            <p class="group-name"></p>
         </div>
         <div class="group">
-            <img src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1684671335/hlpschoolsorg/ub05pmudi2nu4uwmzmra/GlenAWilsonHighSchool.png">
-            <p>gawhsco24</p>
+            <p class="group-name"></p>
         </div>
         <div class="group">
-            <img src="https://www.ptbahoops.com/cdn/shop/files/1200px_sapphire_black_outline_300x300.png?v=1640735136">
-            <p>primetimebball</p>
+            <p class="group-name"></p>
         </div>
     </div>
 
@@ -58,21 +78,7 @@
                 <a class="page" href="explore.html">Explore</a>
             </div>
             <div class="tab">
-                <a class="page" href="joined.html">Joined</a>
-                <div class="dropdown-content">
-                    <a href="#">gawhskeyclub</a>
-                    <a href="#">codeteam</a>
-                    <a href="#">gawhsco24</a>
-                    <a href="#">primetimebball</a>
-                </div>
-            </div>
-            <div class="tab">
                 <a class="page" href="created.html">Created</a>
-                <div class="dropdown-content">
-                  <a href="#">gawhscode</a>
-                  <a href="#">gawhskeyclub</a>
-                  <a href="#">gawhsco24</a>
-                </div>
             </div>
             <div class="tab">
                 <a class="page" href="settings.html">Settings</a>

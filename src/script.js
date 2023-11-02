@@ -117,6 +117,64 @@ if(submitBtn){
       });   
 }
 
+// Join group modal
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('myModal');
+    var btn1 = document.getElementsByClassName('side-button 1');
+    var span = document.getElementsByClassName('close')[0];
+  
+    for (var i = 0; i < btn1.length; i++) {
+      btn1[i].addEventListener('click', function() {
+        modal.style.display = 'block';
+      });
+    }
+  
+    span.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+  
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    });
 
+    var joinBtn = document.getElementById("join-group");
+    joinBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        const team = document.getElementById("code").value;
+        alert(`You have joined ${team}!`);
+        const sidebarGroup = document.querySelectorAll('.group-name');
+        sidebarGroup[0].innerHTML = team;
+    })
+  });
+// Create group modal
+  document.addEventListener('DOMContentLoaded', function() {
+    var modal2 = document.getElementById('myModal2');
+    var btn2 = document.getElementsByClassName('side-button 2');
+    var span2 = document.getElementsByClassName('close')[1];
+  
+    for (var i = 0; i < btn2.length; i++) {
+      btn2[i].addEventListener('click', function() {
+        modal2.style.display = 'block';
+      });
+    }
+  
+    span2.addEventListener('click', function() {
+      modal2.style.display = 'none';
+    });
+  
+    window.addEventListener('click', function(event) {
+      if (event.target == modal2) {
+        modal2.style.display = 'none';
+      }
+    });
 
+    var createBtn = document.getElementById("create-group");
+    createBtn.addEventListener('click', function() {
+        modal2.style.display = 'none';
+        const team2 = document.getElementById("new-name").value;
+        alert(`You have created ${team2}!`);
+    });
+  });
    
